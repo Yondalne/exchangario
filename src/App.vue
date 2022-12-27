@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <app-navbar :title="brandName" :items="menuItems"/>
+    <router-view />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppNavbar from "./components/AppNavbar.vue";
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
-  }
+    AppNavbar,
+  },
+  data() {
+    return ({
+      brandName : "Exchangario",
+      menuItems : [
+          { text : "Home", link : "/" },
+          { text : "About", link : "/about" },
+          { text : "Faq", link : "/faq"},
+          { text : "Login", link : "/login"},
+          { text : "Register", link : "/register"},
+      ],
+    })
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  @import 'assets/styles/variables.scss';
+  @import '~bulma/bulma.sass';
+  @import 'assets/styles/main.scss';
 </style>
